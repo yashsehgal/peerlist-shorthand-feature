@@ -57,7 +57,7 @@ export default function ShorthandManager() {
             <div className="flex flex-row items-center justify-start gap-3">
                 <Dialog>
                     <DialogTrigger asChild>
-                        <Button className="flex flex-row items-center justify-center gap-2">
+                        <Button className="flex flex-row items-center justify-center gap-2 bg-green-600 hover:bg-green-700">
                             <Plus size={14} />
                             {"Add new command"}
                         </Button>

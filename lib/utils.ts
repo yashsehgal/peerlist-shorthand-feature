@@ -27,3 +27,19 @@ export function getShorthands() {
     return JSON.parse(localStorage.getItem("shorthands"));
   }
 }
+
+export function getShorthandContent(shorthand: string) {
+  let shorthandResponse;
+  // @ts-ignore
+  JSON.parse(localStorage.getItem("shorthands"))?.map((shorthandItem) => {
+    if (shorthandItem?.shorthand === shorthand) {
+      shorthandResponse = shorthandItem?.content;
+    }
+  });
+  return shorthandResponse;
+}
+
+export function setCharAt(str: string, index: number, chr: string) {
+  if(index > str.length-1) return str;
+  return str.substring(0,index) + chr + str.substring(index+1);
+}
