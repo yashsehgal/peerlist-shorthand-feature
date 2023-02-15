@@ -38,6 +38,7 @@ export default function MessageInput() {
         _shorthandedMessageContent = setCharAt(
             _shorthandedMessageContent, 
             _shorthandedMessageContent.length-1, 
+            // @ts-ignore
             getShorthandContent(shorthand)
         );
         setMessageContent(_shorthandedMessageContent);
