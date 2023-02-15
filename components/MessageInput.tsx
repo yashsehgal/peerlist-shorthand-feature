@@ -17,7 +17,7 @@ export default function MessageInput() {
 
     useEffect(() => {
         setShorthandCommands(getShorthands());
-    });
+    }, []);
 
     useEffect(() => {
         if (!messageContent) setShorthandCommandList(false);
