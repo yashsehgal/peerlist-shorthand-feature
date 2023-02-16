@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/Input";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import { getShorthandContent, getShorthands, setCharAt } from "@/lib/utils";
 import { Button } from "./ui/Button";
@@ -16,7 +16,7 @@ export default function MessageInput() {
 
     useEffect(() => {
         setShorthandCommands(getShorthands());
-    }, []);
+    });
 
     useEffect(() => {
         if (!messageContent) setShorthandCommandList(false);
@@ -31,6 +31,19 @@ export default function MessageInput() {
         }
     };
 
+    const escFunction = useCallback((event: any) => {
+        if (event.key === "Escape") {
+            setShorthandCommandList(false);
+        }
+    }, []);
+    
+    useEffect(() => {
+        document.addEventListener("keydown", escFunction, false);
+        return () => {
+          document.removeEventListener("keydown", escFunction, false);
+        };
+    }, [escFunction]);
+
     const replacePostSlashWithShorthand = (shorthand: string) => {
         if (!shorthand) return;
         let _shorthandedMessageContent = messageContent;
@@ -44,7 +57,7 @@ export default function MessageInput() {
     };
 
     return (
-        <section className="message-input-section my-10">
+        <section className="message-input-section my-4">
             <h2 className="mb-2 leading-snug text-base font-medium text-gray-500 cursor-default select-none">
                 Send Message
             </h2>
