@@ -1,15 +1,18 @@
-import { ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export function saveToLocalStorage({ newShorthand, newContent }: {
-  newShorthand: string,
-  newContent: string
+export function saveToLocalStorage({
+  newShorthand,
+  newContent,
+}: {
+  newShorthand: string;
+  newContent: string;
 }) {
-  let allShorthands: Array<{ shorthand: string, content: string }> = [];
+  let allShorthands: Array<{ shorthand: string; content: string }> = [];
   if (localStorage.getItem('shorthands') === null) {
     allShorthands = [];
   } else {
@@ -24,14 +27,14 @@ export function saveToLocalStorage({ newShorthand, newContent }: {
 export function getShorthands() {
   if (typeof window !== 'undefined') {
     // @ts-ignore
-    return JSON.parse(localStorage.getItem("shorthands"));
+    return JSON.parse(localStorage.getItem('shorthands'));
   }
 }
 
 export function getShorthandContent(shorthand: string) {
   let shorthandResponse;
   // @ts-ignore
-  JSON.parse(localStorage.getItem("shorthands"))?.map((shorthandItem) => {
+  JSON.parse(localStorage.getItem('shorthands'))?.map((shorthandItem) => {
     if (shorthandItem?.shorthand === shorthand) {
       shorthandResponse = shorthandItem?.content;
     }
@@ -40,6 +43,6 @@ export function getShorthandContent(shorthand: string) {
 }
 
 export function setCharAt(str: string, index: number, chr: string) {
-  if(index > str.length-1) return str;
-  return str.substring(0,index) + chr + str.substring(index+1);
+  if (index > str.length - 1) return str;
+  return str.substring(0, index) + chr + str.substring(index + 1);
 }

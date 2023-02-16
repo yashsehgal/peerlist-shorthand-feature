@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@next/font": "13.1.6",
@@ -31,6 +33,7 @@
     "lucide": "^0.114.0",
     "lucide-react": "^0.114.0",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
     "tailwind-merge": "^1.9.1",
     "tailwindcss": "^3.2.6",
     "tailwindcss-animate": "^1.0.5"
