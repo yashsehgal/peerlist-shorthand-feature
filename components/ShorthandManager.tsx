@@ -59,7 +59,7 @@ export default function ShorthandManager() {
                     <DialogTrigger asChild>
                         <Button className="flex flex-row items-center justify-center gap-2 bg-green-600 hover:bg-green-700">
                             <Plus size={14} />
-                            {"Add new command"}
+                            Add new command
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
@@ -72,7 +72,7 @@ export default function ShorthandManager() {
                         <div className="dialog-content-body my-2 grid grid-cols-1 gap-4">
                             <div className="flex flex-col items-start justify-start gap-3">
                                 <Label htmlFor="shorthand-command">
-                                    {"Shorthand Command"}
+                                    Shorthand Command
                                 </Label>
                                 <Input 
                                     id="shorthand-command"
@@ -83,7 +83,7 @@ export default function ShorthandManager() {
                             </div>
                             <div className="flex flex-col items-start justify-start gap-3">
                                 <Label htmlFor="shorthand-content">
-                                    {"Content for Shorthand"}
+                                    Content for Shorthand
                                 </Label>
                                 <Input 
                                     id="shorthand-content"
@@ -106,14 +106,14 @@ export default function ShorthandManager() {
                                         handleShorthandUpdate();
                                     }}
                                 >
-                                    {"Save Shorthand"}
+                                    Save Shorthand
                                 </Button>
                             </DialogClose>
                         </DialogFooter>
                     </DialogContent>
                 </Dialog>
                 <Button variant={"outline"}>
-                    {"Manage Shorthands"}
+                    Manage Shorthands
                 </Button>
             </div>
             <div className="shorthand-commands-list-wrapper mt-4
@@ -136,7 +136,7 @@ export default function ShorthandManager() {
                             </li>
                         ))
                         : <p className="cursor-default select-none text-xs text-gray-400 font-normal">
-                            {"No Shorthand Commands found"}
+                            No Shorthand Commands found
                         </p>
                     }
                 </ul>

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { ScrollArea } from "@/components/ui/ScrollArea";
 import { getShorthandContent, getShorthands, setCharAt } from "@/lib/utils";
 import { Button } from "./ui/Button";
-import { Separator } from "./ui/Seperator";
 
 type ShorthandCommandType = {
     shorthand: string;
@@ -47,7 +46,7 @@ export default function MessageInput() {
     return (
         <section className="message-input-section my-10">
             <h2 className="mb-2 leading-snug text-base font-medium text-gray-500 cursor-default select-none">
-                {"Send Message"}
+                Send Message
             </h2>
             <div className="relative">
                 <Input 
@@ -79,7 +78,7 @@ export default function MessageInput() {
                                 </li>
                             ))
                             : <p className="cursor-default select-none text-xs text-gray-400 font-normal">
-                                {"No Shorthand Commands found"}
+                                No Shorthand Commands found
                             </p>
                         }
                     </ul>
