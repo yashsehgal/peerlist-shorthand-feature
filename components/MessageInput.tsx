@@ -15,6 +15,7 @@ export default function MessageInput() {
     ShorthandCommandType[]
   >([]);
   const [shorthandCommandList, setShorthandCommandList] = useState(false);
+  const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
     setShorthandCommands(getShorthands());
@@ -60,16 +61,45 @@ export default function MessageInput() {
 
   return (
     <section className="message-input-section my-4">
+      <div className="messages-content-container my-4 grid h-[200px] overflow-y-scroll">
+        {messages?.map((message: string, messageIndex: number) => (
+          <div key={messageIndex}>
+            <span className="text-xs font-medium text-gray-500">you</span>
+            <div className="message-content-wrapper w-fit rounded bg-green-600 text-white font-medium text-sm px-4 py-2">
+                {message}
+            </div>
+          </div>
+        ))}
+      </div>
       <h2 className="mb-2 leading-snug text-base font-medium text-gray-500 cursor-default select-none">
         Send Message
       </h2>
       <div className="relative">
-        <Input
-          className="absolute w-[680px]"
-          placeholder="Type a message or use / to use shorthand commands"
-          value={messageContent}
-          onChange={handleMessageContentChange}
-        />
+        <div className="message-input-layer-wrapper absolute w-[680px] flex flex-row items-center justify-between gap-2">
+          <Input
+            placeholder="Type a message or use / to use shorthand commands"
+            value={messageContent}
+            onChange={handleMessageContentChange}
+            onKeyDown={(keyEvent) => {
+              if (keyEvent.code === 'Enter') {
+                let _updatedMessageList: string[] = messages;
+                _updatedMessageList.push(messageContent);
+                setMessages(_updatedMessageList);
+                setMessageContent('');
+              }
+            }}
+          />
+          <Button
+            className="bg-green-600 hover:bg-green-700"
+            onClick={() => {
+              let _updatedMessageList: string[] = messages;
+              _updatedMessageList.push(messageContent);
+              setMessages(_updatedMessageList);
+              setMessageContent('');
+            }}>
+            Send
+          </Button>
+        </div>
         <ScrollArea
           className={`absolute top-12 w-[180px] h-fit min-h-[40px] overflow-y-scroll
                                 max-h-[140px] rounded p-2 border border-gray-200 shadow-md
