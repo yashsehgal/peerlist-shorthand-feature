@@ -66,7 +66,7 @@ export default function MessageInput() {
           <div key={messageIndex}>
             <span className="text-xs font-medium text-gray-500">you</span>
             <div className="message-content-wrapper w-fit rounded bg-green-600 text-white font-medium text-sm px-4 py-2">
-                {message}
+              {message}
             </div>
           </div>
         ))}
