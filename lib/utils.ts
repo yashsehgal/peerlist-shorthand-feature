@@ -41,5 +41,3 @@ export function getShorthandContent(shorthand: string) {
   });
   return shorthandResponse;
 }
-
-
