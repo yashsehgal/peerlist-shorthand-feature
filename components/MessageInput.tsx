@@ -1,7 +1,7 @@
 import { Input } from '@/components/ui/Input';
 import { useCallback, useEffect, useState } from 'react';
 import { ScrollArea } from '@/components/ui/ScrollArea';
-import { getShorthandContent, getShorthands, setCharAt } from '@/lib/utils';
+import { getShorthandContent, getShorthands } from '@/lib/utils';
 import { Button } from './ui/Button';
 
 type ShorthandCommandType = {
@@ -49,14 +49,12 @@ export default function MessageInput() {
 
   const replacePostSlashWithShorthand = (shorthand: string) => {
     if (!shorthand) return;
-    let _shorthandedMessageContent = messageContent;
-    _shorthandedMessageContent = setCharAt(
-      _shorthandedMessageContent,
-      _shorthandedMessageContent.length - 1,
-      // @ts-ignore
-      getShorthandContent(shorthand),
-    );
-    setMessageContent(_shorthandedMessageContent);
+    const shorthandContent = getShorthandContent(shorthand);
+    if (!shorthandContent) return;
+    setMessageContent((messageContent) => {
+      const lastSlashIndex = messageContent.lastIndexOf('/');
+      return messageContent.substring(0, lastSlashIndex) + shorthandContent;
+    });
   };
 
   return (
