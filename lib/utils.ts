@@ -41,3 +41,45 @@ export function getShorthandContent(shorthand: string) {
   });
   return shorthandResponse;
 }
+
+export function removeShorthand(shorthand: string) {
+  // @ts-ignore
+  let allShorthands: Array<{ shorthand: string; content: string }> = JSON.parse(
+    // @ts-ignore
+    localStorage.getItem('shorthands'),
+  );
+
+  let updatedShorthandList = allShorthands.filter(function (item) {
+    if (item?.shorthand !== shorthand) return item;
+  });
+
+  localStorage.setItem('shorthands', JSON.stringify(updatedShorthandList));
+}
+
+export function updateShorthandData({
+  shorthand,
+  newShorthand,
+  newContent,
+}: {
+  shorthand: string;
+  newShorthand: string;
+  newContent: string;
+}) {
+  // @ts-ignore
+  let allShorthands: Array<{ shorthand: string; content: string }> = JSON.parse(
+    // @ts-ignore
+    localStorage.getItem('shorthands'),
+  );
+
+  let updatedShorthandList = allShorthands.map((item) => {
+    if (item?.shorthand === shorthand) {
+      item = {
+        shorthand: newShorthand,
+        content: newContent,
+      };
+    }
+    return allShorthands;
+  });
+
+  localStorage.setItem('shorthands', JSON.stringify(updatedShorthandList));
+}
