@@ -45,6 +45,7 @@ export function getShorthandContent(shorthand: string) {
 export function removeShorthand(shorthand: string) {
   // @ts-ignore
   let allShorthands: Array<{ shorthand: string; content: string }> = JSON.parse(
+    // @ts-ignore
     localStorage.getItem('shorthands'),
   );
 
@@ -66,6 +67,7 @@ export function updateShorthandData({
 }) {
   // @ts-ignore
   let allShorthands: Array<{ shorthand: string; content: string }> = JSON.parse(
+    // @ts-ignore
     localStorage.getItem('shorthands'),
   );
 
@@ -80,9 +82,4 @@ export function updateShorthandData({
   });
 
   localStorage.setItem('shorthands', JSON.stringify(updatedShorthandList));
-}
-
-export function setCharAt(str: string, index: number, chr: string) {
-  if (index > str.length - 1) return str;
-  return str.substring(0, index) + chr + str.substring(index + 1);
 }
